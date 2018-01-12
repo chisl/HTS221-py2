@@ -75,7 +75,7 @@ class HTS221_Base:
 	# To select the numbers of averaged humidity samples (4 - 512), see Table 16. 
 	# Register CTRL_REG1
 	# 7.3 
-	#           Control register 1 
+	#         Control register 1 
 	
 	
 	def setCTRL_REG1(self, val):
@@ -93,23 +93,23 @@ class HTS221_Base:
 	# block data update 
 	# Bits ODR
 	# output data rate selection (see table 17) 
-	#               The PD bit is used to turn on the device. The device is in power-down mode when PD = ‘0’
-	#               (default value after boot). The device is active when PD is set to ‘1’.
-	#               The BDU bit is used to inhibit the output register update between the reading of the upper and lower register parts. In default mode (BDU = ‘0’), the lower and upper register parts are updated continuously. If it is not certain whether the read will be faster than output data rate, it is recommended to set the BDU bit to ‘1’. In this way, after the reading of the lower (upper) register part, the content of that output register is not updated until the upper (lower) part is read also.
-	#               This feature prevents the reading of LSB and MSB related to different samples. The ODR1 and ODR0 bits permit changes to the output data rates of humidity and
-	#               temperature samples.The default value corresponds to a “one-shot” configuration for both
-	#               humidity and temperature output. ODR1 and ODR0 can be configured as described in
-	#               Table 17. Output data rate configuration
-	#               ODR1 ODR0  Humidity (Hz)  Temperature  (Hz)
-	#               0       0       One-shot           One-shot          
-	#               0       1           1 Hz               1 Hz
-	#               1       0           7 Hz               7 Hz
-	#               1       1        12.5 Hz            12.5 Hz 
-	#             
+	#             The PD bit is used to turn on the device. The device is in power-down mode when PD = ‘0’
+	#             (default value after boot). The device is active when PD is set to ‘1’.
+	#             The BDU bit is used to inhibit the output register update between the reading of the upper and lower register parts. In default mode (BDU = ‘0’), the lower and upper register parts are updated continuously. If it is not certain whether the read will be faster than output data rate, it is recommended to set the BDU bit to ‘1’. In this way, after the reading of the lower (upper) register part, the content of that output register is not updated until the upper (lower) part is read also.
+	#             This feature prevents the reading of LSB and MSB related to different samples. The ODR1 and ODR0 bits permit changes to the output data rates of humidity and
+	#             temperature samples.The default value corresponds to a “one-shot” configuration for both
+	#             humidity and temperature output. ODR1 and ODR0 can be configured as described in
+	#             Table 17. Output data rate configuration
+	#             ODR1 ODR0  Humidity (Hz)  Temperature  (Hz)
+	#             0       0       One-shot           One-shot          
+	#             0       1           1 Hz               1 Hz
+	#             1       0           7 Hz               7 Hz
+	#             1       1        12.5 Hz            12.5 Hz 
+	#         
 	
 	# Register CTRL_REG2
 	# 7.4 
-	#           Control register 2 
+	#         Control register 2 
 	
 	
 	def setCTRL_REG2(self, val):
@@ -122,26 +122,26 @@ class HTS221_Base:
 	
 	# Bits BOOT
 	# Reboot memory content 
-	#               The BOOT bit is used to refresh the content of the internal registers stored in the Flash
-	#               memory block. At device power-up, the content of the Flash memory block is transferred to the internal registers related to trimming functions to permit good behavior of the device itself. If, for any reason, the content of the trimming registers is modified, it is sufficient to use this bit to restore the correct values. When the BOOT bit is set to ‘1’ the content of the internal Flash is copied inside the corresponding internal registers and is used to calibrate the device. These values are factory trimmed and are different for every device. They permit good behavior of the device and normally they should not be changed. At the end of the boot process, the BOOT bit is set again to ‘0’. 
+	#             The BOOT bit is used to refresh the content of the internal registers stored in the Flash
+	#             memory block. At device power-up, the content of the Flash memory block is transferred to the internal registers related to trimming functions to permit good behavior of the device itself. If, for any reason, the content of the trimming registers is modified, it is sufficient to use this bit to restore the correct values. When the BOOT bit is set to ‘1’ the content of the internal Flash is copied inside the corresponding internal registers and is used to calibrate the device. These values are factory trimmed and are different for every device. They permit good behavior of the device and normally they should not be changed. At the end of the boot process, the BOOT bit is set again to ‘0’. 
 	
 	# Bits reserved_0
 	# Bits Heater
 	# The Heater bit is used to control an internal heating element, that can effectively be used to speed up the sensor recovery time in case of condensation. The heater can be operated only by an external controller, which means that it has to be switched on/off directly by FW. Humidity and temperature output should not be read during the heating cycle; valid data can be read out once the heater has been turned off, after the completion of the heating cycle. Typical power consumption related to VDD is described in Table 18. 
-	#               Table 18. Typical power consumption with heater ON:
-	#               VDD [V]   I [mA]
-	#               3.3           33
-	#               2.5	        22
-	#               1.8	        12  
-	#             
+	#             Table 18. Typical power consumption with heater ON:
+	#             VDD [V]   I [mA]
+	#             3.3           33
+	#             2.5	        22
+	#             1.8	        12  
+	#         
 	
 	# Bits ONE_SHOT_ENABLE
 	# One-shot enable
-	#               The ONE_SHOT bit is used to start a new conversion. In this situation a single acquisition of temperature and humidity is started when the ONE_SHOT bit is set to ‘1’. At the end of conversion the new data are available in the output registers, the STATUS_REGBIT 0 =  and STATUS_REGBIT 1 =  bits are set to ‘1’ and the ONE_SHOT bit comes back to ‘0’ by hardware. 
+	#             The ONE_SHOT bit is used to start a new conversion. In this situation a single acquisition of temperature and humidity is started when the ONE_SHOT bit is set to ‘1’. At the end of conversion the new data are available in the output registers, the STATUS_REGBIT 0 =  and STATUS_REGBIT 1 =  bits are set to ‘1’ and the ONE_SHOT bit comes back to ‘0’ by hardware. 
 	
 	# Register CTRL_REG3
 	# 7.5 
-	#           Control register 3: Control register for data ready output signal 
+	#         Control register 3: Control register for data ready output signal 
 	
 	
 	def setCTRL_REG3(self, val):
@@ -159,10 +159,10 @@ class HTS221_Base:
 	# Bits reserved_0
 	# Bits DRDY_EN
 	# Data Ready enable 
-	#               The DRDY_EN bit enables the DRDY signal on pin 3. Normally inactive, the DRDY output
-	#               signal becomes active on new data available: logical OR of the bits STATUS_REGBIT[1]
-	#               and STATUS_REGBIT[0] for humidity and temperature, respectively. The DRDY signal returns
-	#               inactive after both HUMIDITY_OUT_H and TEMP_OUT_H registers are read. 
+	#             The DRDY_EN bit enables the DRDY signal on pin 3. Normally inactive, the DRDY output
+	#             signal becomes active on new data available: logical OR of the bits STATUS_REGBIT[1]
+	#             and STATUS_REGBIT[0] for humidity and temperature, respectively. The DRDY signal returns
+	#             inactive after both HUMIDITY_OUT_H and TEMP_OUT_H registers are read. 
 	
 	# Bits reserved_1
 	# Register STATUS_REG
